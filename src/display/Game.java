@@ -7,8 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Game extends JFrame {
+    /**
+     * This class is used to 'display' the game.
+     */
     private JPanel grid_panel; // panel used to display grid panels
-    private JPanel[][] grid_array; // array used to store panels in grid
 
     public void initialise() {
         // if grid already drawn (reinitialise rather than initialise) remove grid from frame and delete it
@@ -18,7 +20,8 @@ public class Game extends JFrame {
         }
 
         grid_panel = new JPanel(new GridLayout(20, 20));
-        grid_array = new JPanel[20][20];
+        // array used to store panels in grid
+        JPanel[][] grid_array = new JPanel[20][20];
 
         // for loop to create grid
         for (int x = 0; x < grid_array.length; x++) {
@@ -42,8 +45,7 @@ public class Game extends JFrame {
         this.add(grid_panel);
     }
 
-    public Game() {
-
+    Game() {
         // set up game environment
         initialise();
         // key listener to respond to key events

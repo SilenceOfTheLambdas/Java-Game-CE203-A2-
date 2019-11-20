@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7affebae-6fd9-4a14-8e29-8fc45ef0eddc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/display/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/KeyboardListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/MouseClickListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/.README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +73,7 @@
       <updated>1574190472950</updated>
       <workItem from="1574190478564" duration="725000" />
       <workItem from="1574191223993" duration="834000" />
-      <workItem from="1574268983855" duration="1277000" />
+      <workItem from="1574268983855" duration="1990000" />
     </task>
     <servers />
   </component>
