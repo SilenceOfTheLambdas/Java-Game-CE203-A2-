@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7affebae-6fd9-4a14-8e29-8fc45ef0eddc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/logic/enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/display/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/enemy.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +74,7 @@
       <updated>1574190472950</updated>
       <workItem from="1574190478564" duration="725000" />
       <workItem from="1574191223993" duration="834000" />
-      <workItem from="1574268983855" duration="8413000" />
+      <workItem from="1574268983855" duration="9416000" />
     </task>
     <task id="LOCAL-00001" summary="added some comments">
       <created>1574270991918</created>
@@ -92,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574275575686</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="started on enemy spawner">
+      <created>1574277732368</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574277732368</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +119,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added some comments" />
     <MESSAGE value="implemented score panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented score panel" />
+    <MESSAGE value="started on enemy spawner" />
+    <option name="LAST_COMMIT_MESSAGE" value="started on enemy spawner" />
   </component>
 </project>

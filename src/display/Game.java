@@ -13,12 +13,10 @@ public class Game extends JFrame {
     /**
      * This class is used to 'display' the game.
      */
-    private static final int ROUND_TIME = 60000;
-    private JPanel game_panel;
+    private static final int ROUND_TIME = 60000; // Time for each round (1 minute)
+
     private JPanel grid_panel; // panel used to display grid panels
-    private JPanel score_panel; // panel used to display the scores
-    // array used to store panels in grid
-    JPanel[][] grid_array = new JPanel[50][50];
+    private JPanel[][] grid_array = new JPanel[50][50]; // array used to store panels in grid
 
     public void initialise() {
         // if grid already drawn (reinitialise rather than initialise) remove grid from frame and delete it
@@ -26,9 +24,10 @@ public class Game extends JFrame {
             this.remove(grid_panel);
             grid_panel = null;
         }
-
-        game_panel = new JPanel(new BorderLayout());
-        score_panel = new JPanel(new BorderLayout());
+//        panel used to display the scores
+        JPanel score_panel = new JPanel(new BorderLayout());
+//        The panel used to hold the game grid
+        JPanel game_panel = new JPanel(new BorderLayout());
         grid_panel = new JPanel(new GridLayout(50, 50));
 
 //        Set properties for components
@@ -69,9 +68,10 @@ public class Game extends JFrame {
 //        Spawn in the enemies
         TimerTask enemySpawner = new enemy(grid_array);
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(enemySpawner, 2, 1000);
+        // Spawn time for enemies
+        int spawn_interval = 3000;
+        timer.scheduleAtFixedRate(enemySpawner, 0, spawn_interval);
 
-        Thread.sleep(ROUND_TIME);
-
+        Thread.sleep(ROUND_TIME); // Do this for 1 minute
     }
 }

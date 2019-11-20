@@ -1,5 +1,4 @@
 package logic;
-import display.Game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +11,8 @@ import java.util.TimerTask;
  */
 
 public class enemy extends TimerTask {
-    JPanel[][] grid_array;
-    int spawn_interval = 1000; // spawn an enemy every second
-    int movement_speed = 2;
+    private JPanel[][] grid_array; // The grid that the enemies will spawn on
+    int movement_speed = 2; // how quickly the enemies will move from one grid cell to another
 
     public enemy(JPanel[][] grid_array) {
         this.grid_array = grid_array;
@@ -23,14 +21,13 @@ public class enemy extends TimerTask {
     @Override
     public void run() {
         System.out.println("Spawning enemy now.....");
-        int spawn_location = (int)(Math.random() * 50 - 1);
+        int spawn_location = (int)(Math.random() * grid_array.length);
         try {
             if (!(grid_array[0][spawn_location].getBackground() == Color.red)) {
                 grid_array[0][spawn_location].setBackground(Color.red);
             }
-            Thread.sleep(spawn_interval);
-        } catch (InterruptedException ex) {
-            System.out.println(ex);
+        } finally {
+            System.out.println("error");
         }
         System.out.println("Enemy spawned ");
     }
