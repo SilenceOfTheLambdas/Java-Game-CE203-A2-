@@ -10,7 +10,9 @@ public class Game extends JFrame {
     /**
      * This class is used to 'display' the game.
      */
+    private JPanel game_panel;
     private JPanel grid_panel; // panel used to display grid panels
+    private JPanel score_panel; // panel used to display the scores
 
     public void initialise() {
         // if grid already drawn (reinitialise rather than initialise) remove grid from frame and delete it
@@ -19,30 +21,34 @@ public class Game extends JFrame {
             grid_panel = null;
         }
 
-        grid_panel = new JPanel(new GridLayout(20, 20));
+        game_panel = new JPanel(new BorderLayout());
+        score_panel = new JPanel(new BorderLayout());
+        grid_panel = new JPanel(new GridLayout(50, 50));
+
+//        Set properties for components
+        score_panel.setBackground(Color.WHITE);
+        JTextArea score_area = new JTextArea();
+        score_area.setText("Score: 122");
+        score_area.setEditable(false);
+
         // array used to store panels in grid
-        JPanel[][] grid_array = new JPanel[20][20];
+        JPanel[][] grid_array = new JPanel[50][50];
 
         // for loop to create grid
         for (int x = 0; x < grid_array.length; x++) {
             for (int y = 0; y < grid_array[x].length; y++) {
                 grid_array[x][y] = new JPanel();
-
-                // checkered design black and white
-                if ((x % 2 == 0 && y % 2 == 1) || (x % 2 == 1 && y % 2 == 0)) {
-                    grid_array[x][y].setBackground(Color.BLACK);
-                } else {
-                    grid_array[x][y].setBackground(Color.WHITE);
-                }
-
+                grid_array[x][y].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, false));
                 // unique mouse listener per panel to determine which panel was clicked
                 grid_array[x][y].addMouseListener(new MouseClickListener(this));
                 grid_panel.add(grid_array[x][y]);
             }
         }
-
+        game_panel.add(grid_panel);
+        score_panel.add(score_area);
         // add panel to frame
-        this.add(grid_panel);
+        this.add(score_panel, BorderLayout.NORTH);
+        this.add(game_panel, BorderLayout.CENTER);
     }
 
     Game() {
@@ -52,8 +58,9 @@ public class Game extends JFrame {
         addKeyListener(new KeyboardListener(this));
 
         // standard configuration
-        setSize(new Dimension(400, 400));
+        setSize(new Dimension(900, 900));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(true);
         setVisible(true);
 
     }
