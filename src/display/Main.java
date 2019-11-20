@@ -6,7 +6,7 @@ public class Main {
      * @param args additional command-line arguments specified by the user
      */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 	    new Game();
     }
 }

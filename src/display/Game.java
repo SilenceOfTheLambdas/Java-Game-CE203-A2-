@@ -2,17 +2,23 @@ package display;
 
 import logic.KeyboardListener;
 import logic.MouseClickListener;
+import logic.enemy;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class Game extends JFrame {
     /**
      * This class is used to 'display' the game.
      */
+    private static final int ROUND_TIME = 60000;
     private JPanel game_panel;
     private JPanel grid_panel; // panel used to display grid panels
     private JPanel score_panel; // panel used to display the scores
+    // array used to store panels in grid
+    JPanel[][] grid_array = new JPanel[50][50];
 
     public void initialise() {
         // if grid already drawn (reinitialise rather than initialise) remove grid from frame and delete it
@@ -31,9 +37,6 @@ public class Game extends JFrame {
         score_area.setText("Score: 122");
         score_area.setEditable(false);
 
-        // array used to store panels in grid
-        JPanel[][] grid_array = new JPanel[50][50];
-
         // for loop to create grid
         for (int x = 0; x < grid_array.length; x++) {
             for (int y = 0; y < grid_array[x].length; y++) {
@@ -51,7 +54,7 @@ public class Game extends JFrame {
         this.add(game_panel, BorderLayout.CENTER);
     }
 
-    Game() {
+    Game() throws Exception {
         // set up game environment
         initialise();
         // key listener to respond to key events
@@ -62,6 +65,13 @@ public class Game extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(true);
         setVisible(true);
+
+//        Spawn in the enemies
+        TimerTask enemySpawner = new enemy(grid_array);
+        Timer timer = new Timer(true);
+        timer.scheduleAtFixedRate(enemySpawner, 2, 1000);
+
+        Thread.sleep(ROUND_TIME);
 
     }
 }
