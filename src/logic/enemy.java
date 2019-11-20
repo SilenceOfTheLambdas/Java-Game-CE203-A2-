@@ -22,12 +22,8 @@ public class enemy extends TimerTask {
     public void run() {
         System.out.println("Spawning enemy now.....");
         int spawn_location = (int)(Math.random() * grid_array.length);
-        try {
-            if (!(grid_array[0][spawn_location].getBackground() == Color.red)) {
-                grid_array[0][spawn_location].setBackground(Color.red);
-            }
-        } finally {
-            System.out.println("error");
+        if (!(grid_array[0][spawn_location].getBackground() == Color.red)) {
+            grid_array[0][spawn_location].setBackground(Color.red);
         }
         System.out.println("Enemy spawned ");
     }
