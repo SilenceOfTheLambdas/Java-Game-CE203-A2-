@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7affebae-6fd9-4a14-8e29-8fc45ef0eddc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/csmith.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objects/Turrets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/META-INF/Java Game (CE203 A2).kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/logic/enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/logic/enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/enemy.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,7 +35,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="discord-application" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -73,6 +80,9 @@
       <workItem from="1574190478564" duration="725000" />
       <workItem from="1574191223993" duration="834000" />
       <workItem from="1574268983855" duration="9516000" />
+      <workItem from="1574690741457" duration="71000" />
+      <workItem from="1574690867819" duration="4657000" />
+      <workItem from="1574697064350" duration="3097000" />
     </task>
     <task id="LOCAL-00001" summary="added some comments">
       <created>1574270991918</created>

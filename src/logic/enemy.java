@@ -14,17 +14,15 @@ public class enemy extends TimerTask {
     private JPanel[][] grid_array; // The grid that the enemies will spawn on
     int movement_speed = 2; // how quickly the enemies will move from one grid cell to another
 
-    public enemy(JPanel[][] grid_array) {
-        this.grid_array = grid_array;
+    public enemy(JPanel[][] game_area) {
+        this.grid_array = game_area;
     }
 
     @Override
     public void run() {
         System.out.println("Spawning enemy now.....");
         int spawn_location = (int)(Math.random() * grid_array.length);
-        if (!(grid_array[0][spawn_location].getBackground() == Color.red)) {
-            grid_array[0][spawn_location].setBackground(Color.red);
-        }
+//        TODO: Enemy shape should be spawned here
         System.out.println("Enemy spawned ");
     }
 }
