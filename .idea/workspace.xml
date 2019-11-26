@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7affebae-6fd9-4a14-8e29-8fc45ef0eddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project-template.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Game (CE203 A2).iml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Game (CE203 A2).iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/display/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/logic/KeyboardListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/logic/KeyboardListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/logic/MouseClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/logic/MouseClickListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/logic/enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Game (CE203 A2)/logic/enemy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/KeyboardListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/KeyboardListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Levels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Levels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/MouseClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/MouseClickListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/RoundTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/RoundTimer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574700251783</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed project issues and also fixed round timer and map loading">
+      <created>1574793522752</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574793522752</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +153,7 @@
     <MESSAGE value="started on enemy spawner" />
     <MESSAGE value="adjusted some spawn speed values" />
     <MESSAGE value="implemented some kind of path" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented some kind of path" />
+    <MESSAGE value="fixed project issues and also fixed round timer and map loading" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed project issues and also fixed round timer and map loading" />
   </component>
 </project>
