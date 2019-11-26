@@ -9,18 +9,6 @@ public class Levels {
 
     private int levelNumber;
     private JPanel[][] game_grid;
-    private Game game;
-
-    public Levels(int levelNo, JPanel[][] game_grid, Game game) {
-//        Get the level number
-        this.levelNumber = levelNo;
-        this.game_grid = game_grid;
-        this.game = game;
-
-        if (levelNo > 4) {
-            gameOver();
-        }
-    }
 
     public Levels(int levelNumber, JPanel[][] game_grid) {
         this.levelNumber = levelNumber;
@@ -29,6 +17,8 @@ public class Levels {
 
     private void gameOver() {
         System.out.println("Game Over!");
+        System.exit(0);
+//        TODO: Display a game over screen showing final score
     }
 
     private int[][] getPathData() {
@@ -50,7 +40,8 @@ public class Levels {
                     {11,40}, {12,40}, {13,40}, {14,40}, {15,40}, {16,40}, {17,40}, {18,40}, {19,40}, {28,40}, {37,40}, {19,41}, {28,41}, {37,41}, {19,42}, {28,42}, {37,42},
                     {19,43}, {28,43}, {37,43}, {19,44}, {28,44}, {37,44}, {19,45}, {28,45}, {37,45}, {19,46}, {28,46}, {37,46}, {19,47}, {28,47}, {37,47}, {19,48},
                     {28,48}, {37,48}, {19,49}, {28,49}, {37,49}};
-        } else if (levelNumber == 2) {
+        }
+        if (levelNumber == 2) {
             return new int[][]{{20,0},
                     {28,0},
                     {20,1},
@@ -222,7 +213,8 @@ public class Levels {
                     {20,49},
                     {28,49}};
 
-        } else if (levelNumber == 3) {
+        }
+        if (levelNumber == 3) {
             return new int[][]{{18,0},
                     {26,0},
                     {18,1},
@@ -438,7 +430,8 @@ public class Levels {
                     {37,49},
                     {46,49}};
 
-        } else if (levelNumber == 4) {
+        }
+        if (levelNumber == 4) {
             return new int[][]{{10,0},
                     {17,0},
                     {10,1},
@@ -671,21 +664,22 @@ public class Levels {
                     {32,49},
                     {41,49}};
         }
+
+        if (levelNumber > 4) {
+            gameOver();
+        }
         return null;
     }
 
     public void loadNextLevel() throws InterruptedException {
 //        This method loads the next level
 //        Clear the last level
-        if (game != null) {
-            game.initialise();
-        }
         int[][] coords = getPathData();
         for (int i = 0; i < game_grid.length; i++) {
             assert coords != null;
-            for (int x = 0, y = 1; x < coords.length; x++) {
-                int xCoord = coords[x][0];
-                int yCoord = coords[x][1];
+            for (int[] coord : coords) {
+                int xCoord = coord[0];
+                int yCoord = coord[1];
                 game_grid[xCoord][yCoord].setBorder(null);
                 game_grid[xCoord][yCoord].setBackground(Color.BLACK);
             }

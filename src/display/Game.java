@@ -12,7 +12,7 @@ public class Game extends JFrame {
     /**
      * This class is used to 'display' the game.
      */
-    private static final int ROUND_TIME = 20000; // Time for each round (1 minute)
+    private static final int ROUND_TIME = 2000; // Time for each round (1 minute)
 
     private JPanel grid_panel; // panel used to display grid panels
     private JPanel[][] grid_array = new JPanel[50][50]; // array used to store panels in grid
@@ -57,7 +57,6 @@ public class Game extends JFrame {
         initialise();
         Levels level1 = new Levels(1, grid_array);
         level1.loadNextLevel();
-        int levelNo = 2; // The level number, this gets incremented
         // key listener to respond to key events
         addKeyListener(new KeyboardListener(this));
 
@@ -74,8 +73,9 @@ public class Game extends JFrame {
         int spawn_interval = 3000;
         timer.scheduleAtFixedRate(enemySpawner, 0, spawn_interval);
         Thread.sleep(ROUND_TIME); // Do this for 1 minute
-        Levels nextLevel = new Levels(levelNo, grid_array);
-        TimerTask roundTimer = new RoundTimer(grid_array, this, nextLevel);
+
+//        Setup the round timer task
+        TimerTask roundTimer = new RoundTimer(grid_array, this);
         Timer t = new Timer(true);
         t.scheduleAtFixedRate(roundTimer, 0, ROUND_TIME);
     }
