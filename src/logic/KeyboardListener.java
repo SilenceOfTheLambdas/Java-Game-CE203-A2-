@@ -34,7 +34,11 @@ public class KeyboardListener implements KeyListener {
                 break;
             case KeyEvent.VK_SPACE:
                 System.out.println("Spacebar");
-                this.game.initialise();
+                try {
+                    this.game.initialise();
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
 //                this.game.repaint();
                 this.game.revalidate(); // repaints node children, rather than node
                 break;

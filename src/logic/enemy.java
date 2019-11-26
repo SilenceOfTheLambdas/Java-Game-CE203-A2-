@@ -17,7 +17,6 @@ public class enemy extends TimerTask {
     public enemy(JPanel[][] game_area) {
         this.grid_array = game_area;
     }
-
     @Override
     public void run() {
         System.out.println("Spawning enemy now.....");
