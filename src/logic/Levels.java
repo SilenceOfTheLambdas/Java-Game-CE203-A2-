@@ -670,6 +670,13 @@ public class Levels {
         }
         return null;
     }
+    public int[][] getEnemySpawnCoords() {
+//        Here are the available coords an enemy can spawn on for each map
+
+        // TODO: generate coords for the enemies
+
+        return null;
+    }
 
     public void loadNextLevel() throws InterruptedException {
 //        This method loads the next level

@@ -12,7 +12,7 @@ public class Game extends JFrame {
     /**
      * This class is used to 'display' the game.
      */
-    private static final int ROUND_TIME = 2000; // Time for each round (1 minute)
+    private static final int ROUND_TIME = 600; // Time for each round (1 minute)
 
     private JPanel grid_panel; // panel used to display grid panels
     private JPanel[][] grid_array = new JPanel[50][50]; // array used to store panels in grid
@@ -32,7 +32,7 @@ public class Game extends JFrame {
 //        Set properties for components
         score_panel.setBackground(Color.WHITE);
         JTextArea score_area = new JTextArea();
-        score_area.setText("Score: 122");
+        score_area.setText("Score: 122"); // TODO: Update score every time the player hits an enemy
         score_area.setEditable(false);
 
         // Display a grid, highlighting the path for enemies
@@ -53,8 +53,8 @@ public class Game extends JFrame {
     }
 
     Game() throws Exception {
-        // set up game environment
         initialise();
+        // set up game environment
         Levels level1 = new Levels(1, grid_array);
         level1.loadNextLevel();
         // key listener to respond to key events
