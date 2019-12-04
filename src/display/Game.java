@@ -10,9 +10,14 @@ import java.awt.Color;
 
 public class Game extends JFrame {
     /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * This class is used to 'display' the game.
      */
-    private static final int ROUND_TIME = 600; // Time for each round (1 minute)
+    private static final int ROUND_TIME = 60000; // Time for each round (1 minute)
 
     private JPanel grid_panel; // panel used to display grid panels
     private JPanel[][] grid_array = new JPanel[50][50]; // array used to store panels in grid
@@ -53,8 +58,9 @@ public class Game extends JFrame {
     }
 
     Game() throws Exception {
-        initialise();
         // set up game environment
+        initialise();
+
         Levels level1 = new Levels(1, grid_array);
         level1.loadNextLevel();
         // key listener to respond to key events
@@ -72,7 +78,6 @@ public class Game extends JFrame {
         // Spawn time for enemies
         int spawn_interval = 3000;
         timer.scheduleAtFixedRate(enemySpawner, 0, spawn_interval);
-        Thread.sleep(ROUND_TIME); // Do this for 1 minute
 
 //        Setup the round timer task
         TimerTask roundTimer = new RoundTimer(grid_array, this);
