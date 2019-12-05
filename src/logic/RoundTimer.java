@@ -8,7 +8,7 @@ import java.util.TimerTask;
 public class RoundTimer extends TimerTask {
     private JPanel[][] grid_array;
     private Game game;
-    private int levelNo = 1; // The level number, this is incremented every round
+    private int levelNo = 0; // The level number, this is incremented every round
 
     public RoundTimer(JPanel[][] grid_array, Game game) {
         this.grid_array = grid_array;
@@ -17,11 +17,7 @@ public class RoundTimer extends TimerTask {
 
     @Override
     public void run() {
-        try {
-            game.initialise(); // Refresh the display
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        game.init(); // Refresh the display
         try {
             levelNo++;
             Levels nextLevel = new Levels(levelNo, grid_array); // Make a new levels object
