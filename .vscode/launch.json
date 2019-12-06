@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "display.Main",
+            "projectName": "java-game-ce203-a2_36fe62b"
+        }
+    ]
+}
