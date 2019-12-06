@@ -17,13 +17,6 @@ public class RoundTimer extends TimerTask {
 
     @Override
     public void run() {
-        game.init(); // Refresh the display
-        try {
-            levelNo++;
-            Levels nextLevel = new Levels(levelNo, grid_array); // Make a new levels object
-            nextLevel.loadNextLevel(); // Then load the next level
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
     }
 }

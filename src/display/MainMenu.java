@@ -12,9 +12,10 @@ public class MainMenu extends JFrame implements ActionListener {
         JButton startBtn = new JButton("Start game");
         JButton exitBtn = new JButton("Exit");
 
+        menu.setLayout(new BorderLayout());
         menu.add(startBtn, BorderLayout.CENTER);
-        menu.add(exitBtn, BorderLayout.CENTER);
-        add(menu, BorderLayout.CENTER);
+        menu.add(exitBtn, BorderLayout.SOUTH);
+        add(menu, BorderLayout.WEST);
 
         startBtn.addActionListener(this);
         exitBtn.addActionListener(e -> System.exit(1));
@@ -23,8 +24,8 @@ public class MainMenu extends JFrame implements ActionListener {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
-        setBackground(Color.BLACK);
-        setForeground(Color.WHITE);
+        menu.setBackground(Color.BLACK);
+        menu.setForeground(Color.WHITE);
     }
 
     @Override

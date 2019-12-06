@@ -15,6 +15,7 @@ public class Game extends JFrame {
     private JPanel grid_panel; // panel used to display grid panels
     private JPanel[][] grid_array = new JPanel[8][8]; // array used to store panels in grid
 
+//    Menu bar stuff
     private JMenuBar game_menubar = new JMenuBar();
     JMenuItem new_game = new JMenuItem("New game");
     JMenuItem pause = new JMenuItem("Pause");
