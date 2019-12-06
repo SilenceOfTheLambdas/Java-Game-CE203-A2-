@@ -1,7 +1,6 @@
 package display;
 
 import logic.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -60,6 +59,11 @@ public class Game extends JFrame {
         quit_game.addActionListener(actionEvent -> {
 //                Quits the game
             QuitGame();
+        });
+        new_game.addActionListener(actionEvent -> {
+            // Re-create a new game
+            this.dispose();
+            new Game();
         });
     }
 
