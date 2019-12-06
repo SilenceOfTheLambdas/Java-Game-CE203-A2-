@@ -4,6 +4,8 @@ import logic.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.TimerTask;
 import java.util.Timer;
 import java.awt.Color;
@@ -13,8 +15,10 @@ public class Game extends JFrame {
     private JPanel grid_panel; // panel used to display grid panels
     private JPanel[][] grid_array = new JPanel[8][8]; // array used to store panels in grid
 
-    private JMenuBar game_menu = new JMenuBar();
-    private JMenuItem game_options = new JMenuItem("Game");
+    private JMenuBar game_menubar = new JMenuBar();
+    JMenuItem new_game = new JMenuItem("New game");
+    JMenuItem pause = new JMenuItem("Pause");
+    JMenuItem quit_game = new JMenuItem("Quit game");
 
     public void init() {
         // if grid already drawn (reinitialise rather than initialise) remove grid from frame and delete it
@@ -37,10 +41,25 @@ public class Game extends JFrame {
             }
         }
         game_panel.add(grid_panel);
-        game_menu.add(game_options);
+
+//        Menubar setup
+        JMenu game_menu = new JMenu("Game");
+        game_menu.add(new_game); game_menu.add(pause); game_menu.add(quit_game);
+
+        game_menubar.add(game_menu);
+        this.setJMenuBar(game_menubar);
         // add panel to frame
-        this.add(game_menu, BorderLayout.NORTH);
         this.add(game_panel, BorderLayout.CENTER);
+
+//        The menu listener, used to do stuff when user clicks on a menu item
+        menuListener();
+    }
+
+    public void menuListener() {
+        quit_game.addActionListener(actionEvent -> {
+//                Quits the game
+            QuitGame();
+        });
     }
 
     Game() {
@@ -48,7 +67,13 @@ public class Game extends JFrame {
         init();
         setSize(900, 900);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setResizable(true);
+        setResizable(false);
         setVisible(true);
+    }
+
+    public void QuitGame() {
+        this.dispose();
+        System.out.println("Game has ended");
+        new MainMenu();
     }
 }
