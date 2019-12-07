@@ -1,14 +1,10 @@
 package display;
 
-import logic.*;
 import objects.JewelCreator;
+import objects.Jewels;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.TimerTask;
-import java.util.Timer;
 import java.awt.Color;
 
 public class Game extends JFrame {
@@ -44,7 +40,7 @@ public class Game extends JFrame {
                 // unique mouse listener per panel to determine which panel was clicked
 //                grid_array[x][y].addMouseListener(new MouseClickListener(this));
                 JewelCreator jewelCreator = new JewelCreator();
-                grid_array[x][y].add(new JewelCreator());
+                grid_array[x][y].add(jewelCreator);
                 grid_panel.add(grid_array[x][y]);
             }
         }
