@@ -1,9 +1,11 @@
 package display;
 
+import logic.MouseActionListener;
 import objects.JewelCreator;
 import objects.Jewels;
 
 import javax.swing.*;
+import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.Color;
 
@@ -38,13 +40,16 @@ public class Game extends JFrame {
                 grid_array[x][y] = new JPanel();
                 grid_array[x][y].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, false));
                 // unique mouse listener per panel to determine which panel was clicked
-//                grid_array[x][y].addMouseListener(new MouseClickListener(this));
                 JewelCreator jewelCreator = new JewelCreator();
                 grid_array[x][y].add(jewelCreator);
                 grid_panel.add(grid_array[x][y]);
             }
         }
         game_panel.add(grid_panel);
+
+        for (int i = 0, x = 0; i < grid_array.length && x < grid_array[i].length; i++, x++) {
+            grid_array[i][x].addMouseListener(new MouseActionListener(grid_array)); // Controls the state of the jewels when clicked on
+        }
 
 //        Menubar setup
         JMenu game_menu = new JMenu("Game");

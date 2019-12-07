@@ -13,13 +13,19 @@ public abstract class Jewels extends JPanel {
     public static final int JEWEL_HEIGHT = 25;
     public static final int JEWEL_WIDTH = 25;
 
+    public Shapes genType() {
+//        Randomly generate a new Jewel type
+        return Shapes.randomShape();
+    }
+
     public enum Shapes {
         Circle,
         Square,
-        Triangle;
+        Triangle,
+        Deleted;
 
         private static final java.util.List<Shapes> VALUES = List.of(values());
-        private static final int SIZE = VALUES.size();
+        private static final int SIZE = VALUES.size() - 1;
         private static final Random RANDOM = new Random();
 
         public static Shapes randomShape() {
@@ -45,4 +51,6 @@ public abstract class Jewels extends JPanel {
     public int getY() {
         return JEWEL_Y;
     }
+    public abstract Shapes getType();
+    public abstract void setType(Shapes jewelToChangeInto);
 }

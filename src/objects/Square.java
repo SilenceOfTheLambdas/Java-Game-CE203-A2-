@@ -4,6 +4,8 @@ import java.awt.*;
 
 public class Square extends Jewels {
 
+    private Shapes type = Shapes.Square;
+
     Square() {
         setJewelColor();
     }
@@ -16,5 +18,15 @@ public class Square extends Jewels {
     @Override
     public void setJewelColor() {
         super.jewelColor = Color.BLUE;
+    }
+
+    @Override
+    public Shapes getType() {
+        return type;
+    }
+
+    @Override
+    public void setType(Shapes jewelToChangeInto) {
+        this.type = jewelToChangeInto;
     }
 }
