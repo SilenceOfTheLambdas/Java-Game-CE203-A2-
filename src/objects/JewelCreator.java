@@ -1,24 +1,38 @@
 package objects;
 
-public class JewelCreator extends Jewels {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.util.Random;
 
-    JewelCreator() {
-//        This will generate a random shape and assign a colour to it
+public class JewelCreator extends JPanel {
 
+    Graphics g;
+
+    public enum Shapes {
+        Circle,
+        Square
+    }
+
+    private Shapes[] shapes = Shapes.values();
+    private Random random = new Random();
+    Shapes getRandShape;
+
+    public JewelCreator() {
+        setForeground(Color.RED);
+        super.setSize(100, 100);
+    }
+
+    public Graphics getG() {
+        return g;
     }
 
     @Override
-    void get_jewel_color() {
-
-    }
-
-    @Override
-    void get_jewel_shape() {
-
-    }
-
-    @Override
-    void get_jewel_position() {
-
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        setSize(50, 50);
+        setBounds(2, 2, 100, 100);
+        g.fillOval(25, 25, 50, 50);
+        this.g = g;
     }
 }

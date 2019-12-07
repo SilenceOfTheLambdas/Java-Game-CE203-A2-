@@ -1,6 +1,8 @@
 package display;
 
 import logic.*;
+import objects.JewelCreator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +13,10 @@ import java.awt.Color;
 
 public class Game extends JFrame {
 
+    public boolean gameOver = false;
+    public boolean gamePaused = false;
+
+    private static final long serialVersionUID = 1L;
     private JPanel grid_panel; // panel used to display grid panels
     private JPanel[][] grid_array = new JPanel[8][8]; // array used to store panels in grid
 
@@ -36,7 +42,9 @@ public class Game extends JFrame {
                 grid_array[x][y] = new JPanel();
                 grid_array[x][y].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, false));
                 // unique mouse listener per panel to determine which panel was clicked
-                grid_array[x][y].addMouseListener(new MouseClickListener(this));
+//                grid_array[x][y].addMouseListener(new MouseClickListener(this));
+                JewelCreator jewelCreator = new JewelCreator();
+                grid_array[x][y].add(new JewelCreator());
                 grid_panel.add(grid_array[x][y]);
             }
         }
@@ -65,6 +73,17 @@ public class Game extends JFrame {
             this.dispose();
             new Game();
         });
+        if (!gamePaused) {
+            pause.addActionListener(actionEvent -> {
+                pause.setText("Resume");
+                gamePaused = true;
+            });
+        } else {
+            pause.addActionListener(actionEvent -> {
+                pause.setText("Pause");
+                gamePaused = false;
+            });
+        }
     }
 
     Game() {
