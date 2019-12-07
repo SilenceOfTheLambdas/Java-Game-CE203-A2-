@@ -15,7 +15,8 @@ public abstract class Jewels extends JPanel {
 
     public enum Shapes {
         Circle,
-        Square;
+        Square,
+        Triangle;
 
         private static final java.util.List<Shapes> VALUES = List.of(values());
         private static final int SIZE = VALUES.size();

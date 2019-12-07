@@ -20,10 +20,12 @@ public class MainMenu extends JFrame implements ActionListener {
         startBtn.addActionListener(this);
         exitBtn.addActionListener(e -> System.exit(1));
 
-        setSize(new Dimension(900, 900));
+        setSize(new Dimension(250, 200));
+//        Set the style so it looks a little better
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+        setLocationRelativeTo(null);
         menu.setBackground(Color.BLACK);
         menu.setForeground(Color.WHITE);
     }
@@ -39,7 +41,7 @@ public class MainMenu extends JFrame implements ActionListener {
         }
     }
 
-    public void createGame() throws Exception {
+    public void createGame() {
 //        Create a new game
         this.dispose();
         new Game();

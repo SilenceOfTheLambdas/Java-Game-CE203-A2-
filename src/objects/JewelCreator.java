@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class JewelCreator extends JPanel {
+    /**
+     * This class is responsible for making a random 'jewel' and painting it onto a JPanel
+     */
 
     public JewelCreator() {
         super.setSize(100, 100);
@@ -28,6 +31,14 @@ public class JewelCreator extends JPanel {
             Square square = new Square();
             setForeground(square.get_jewel_color());
             g.fillRect(Jewels.JEWEL_X, Jewels.JEWEL_Y, Jewels.JEWEL_HEIGHT, Jewels.JEWEL_WIDTH);
+        }
+        if (shape == Jewels.Shapes.Triangle) {
+            super.paintComponent(g);
+            setSize(50, 50);
+            setBounds(2, 2, 50, 50);
+            Triangle triangle = new Triangle();
+            setForeground(triangle.get_jewel_color());
+            g.fillPolygon(triangle.X, triangle.Y, triangle.n);
         }
     }
 }
