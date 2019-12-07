@@ -31,8 +31,7 @@ public class JewelCreator extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         setSize(50, 50);
-        setBounds(2, 2, 100, 100);
-        g.fillOval(25, 25, 50, 50);
-        this.g = g;
+        setBounds(2, 2, 50, 50);
+        g.fillOval(10, 10, 25, 25);
     }
 }

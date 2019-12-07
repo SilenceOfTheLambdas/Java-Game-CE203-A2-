@@ -89,9 +89,10 @@ public class Game extends JFrame {
     Game() {
 //        Setup game environment
         init();
-        setSize(900, 900);
+        setSize(400, 400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
