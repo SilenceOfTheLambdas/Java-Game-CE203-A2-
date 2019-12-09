@@ -23,7 +23,7 @@ public class JewelCreator extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g) { // This should not be doing everything
+    protected void paintComponent(Graphics g) { // Try make it something to do with the x and y of the grid array
         Jewels.Shapes shape = Jewels.Shapes.randomShape();
         if (shape == Jewels.Shapes.Circle) {
             super.paintComponent(g);
