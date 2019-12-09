@@ -1,15 +1,25 @@
 package objects;
 
 import javax.swing.*;
+
+import display.Game;
+
 import java.awt.*;
 
 public class JewelCreator extends JPanel {
     /**
-     * This class is responsible for making a random 'jewel' and painting it onto a JPanel
+     *
+     */
+    private static final long serialVersionUID = -9191226339599430157L;
+
+    /**
+     * This class is responsible for making a random 'jewel' and painting it onto a
+     * JPanel
      */
 
-    public JewelCreator() {
+    public JewelCreator(Game game) {
         super.setSize(100, 100);
+        Jewels.game = game;
     }
 
     @Override

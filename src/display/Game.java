@@ -11,8 +11,10 @@ import java.awt.Color;
 
 public class Game extends JFrame {
 
-    public boolean gameOver = false;
-    public boolean gamePaused = false;
+    boolean gameOver = false;
+    boolean gamePaused = false;
+    public Jewels[][] jewels_coords = new Jewels[8][8];
+    
 
     private static final long serialVersionUID = 1L;
     private JPanel grid_panel; // panel used to display grid panels
@@ -40,7 +42,7 @@ public class Game extends JFrame {
                 grid_array[x][y] = new JPanel();
                 grid_array[x][y].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, false));
                 // unique mouse listener per panel to determine which panel was clicked
-                JewelCreator jewelCreator = new JewelCreator();
+                JewelCreator jewelCreator = new JewelCreator(this);
                 grid_array[x][y].add(jewelCreator);
                 grid_panel.add(grid_array[x][y]);
             }

@@ -1,17 +1,28 @@
 package objects;
 
 import javax.swing.*;
+
+import display.Game;
+
 import java.awt.*;
 import java.util.List;
 import java.util.Random;
 
 public abstract class Jewels extends JPanel {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 6143405949692924937L;
+
+    public static Game game;
+    
     public Color jewelColor;
     public static final int JEWEL_X = 10;
     public static final int JEWEL_Y = 10;
     public static final int JEWEL_HEIGHT = 25;
     public static final int JEWEL_WIDTH = 25;
+
 
     public Shapes genType() {
 //        Randomly generate a new Jewel type
@@ -53,4 +64,5 @@ public abstract class Jewels extends JPanel {
     }
     public abstract Shapes getType();
     public abstract void setType(Shapes jewelToChangeInto);
+    public abstract void addToArray();
 }
