@@ -1,8 +1,12 @@
 package logic;
+
 import objects.JewelCreator;
 import objects.Jewels;
 
 import javax.swing.*;
+
+import display.Game;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -23,8 +27,12 @@ public class MouseActionListener extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
-        System.out.println(Jewels.game.jewels_coords[0][0]);
+        for (int x = 0; x < Game.jewels_coords.length; x++) {
+            for (int y = 0; y < Game.jewels_coords[x].length; y++) {
+                System.out.println(Game.jewels_coords[x][y]);
+            }
+        }
+        
     }
 }
 

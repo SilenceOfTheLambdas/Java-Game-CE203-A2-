@@ -2,6 +2,8 @@ package objects;
 
 import java.awt.*;
 
+import display.Game;
+
 public class Circle extends Jewels {
 
     /**
@@ -12,6 +14,7 @@ public class Circle extends Jewels {
 
     Circle() {
         setJewelColor();
+        addToArray();
     }
 
     @Override
@@ -37,9 +40,9 @@ public class Circle extends Jewels {
     @Override
     public void addToArray() {
         // Add this object to the global array
-        for (int x = 0; x < game.jewels_coords.length; x++) {
-            for (int y = 0; y < game.jewels_coords[x].length; y++) {
-                game.jewels_coords[x][y] = this;
+        for (int x = 0; x < Game.jewels_coords.length; x++) {
+            for (int y = 0; y < Game.jewels_coords[x].length; y++) {
+                Game.jewels_coords[x][y] = getType();
             }
         }
     }

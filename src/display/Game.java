@@ -5,7 +5,6 @@ import objects.JewelCreator;
 import objects.Jewels;
 
 import javax.swing.*;
-import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.Color;
 
@@ -13,7 +12,7 @@ public class Game extends JFrame {
 
     boolean gameOver = false;
     boolean gamePaused = false;
-    public Jewels[][] jewels_coords = new Jewels[8][8];
+    public static Jewels.Shapes[][] jewels_coords = new Jewels.Shapes[8][8];
     
 
     private static final long serialVersionUID = 1L;

@@ -23,7 +23,7 @@ public class JewelCreator extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) { // This should not be doing everything
         Jewels.Shapes shape = Jewels.Shapes.randomShape();
         if (shape == Jewels.Shapes.Circle) {
             super.paintComponent(g);
