@@ -1,158 +1,110 @@
 package logic;
 
-import objects.JewelCreator;
 import objects.Jewels;
-
-import javax.swing.*;
-
-import display.Game;
-
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static logic.Board.*;
+
 public class MouseActionListener extends MouseAdapter {
 
-    JPanel[][] game_grid;
-    boolean selected = true;
-    boolean isAlive, isPattern, switchedBack;
-//    TODO: Find a way to link game_grid to a type of jewel
-    int fromX, fromY, toX, toY;
+    private static Board board;
+    private static Jewels[] jewelsToBeDeleted;
 
-    public MouseActionListener(JPanel[][] game) {
-        this.game_grid = game;
-        isPattern = switchedBack = false;
-        isAlive = true;
+    public MouseActionListener(Board board) {
+        MouseActionListener.board = board;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        for (int x = 0; x < Game.jewels_coords.length; x++) {
-            for (int y = 0; y < Game.jewels_coords[x].length; y++) {
-                System.out.println(Game.jewels_coords[x][y]);
+        selectJewels(e);
+    }
+
+    public void selectJewels(MouseEvent e) {
+        int x = e.getX() / board.cellWidth();
+        int y = e.getY() / board.cellHeight();
+
+        if (!board.selected) {
+            board.fromX = x;
+            board.fromY = y;
+            board.selected = true;
+        } else {
+            board.toX = x;
+            board.toY = y;
+            if((Math.abs(board.fromX - board.toX) == 1 ^ Math.abs(board.fromY - board.toY) == 1) & (jewels[board.fromX][board.fromY].getType() != jewels[board.toX][board.toY].getType())) {
+                switchJewels();
+                board.selected = false;
             }
         }
-        
+    }
+
+    public static void switchJewels() {
+        int tempType = jewels[board.fromX][board.fromY].getType();
+        jewels[board.fromX][board.fromY].setType(jewels[board.toX][board.toY].getType());
+        jewels[board.toX][board.toY].setType(tempType);
+        checkPattern(); // Check to see if a pattern has been created after jewels have been switched
+
+        switchedBack = false;
+        board.repaint();
+    }
+
+    public static void checkPattern() {
+        Jewels temp1 = new Jewels(); // These will hold deleted jewels
+        Jewels temp2 = new Jewels();
+
+        isPattern = false;
+        for (int x = 0; x < BOARDWIDTH; x++) {
+            for (int y = 0; y < BOARDHEIGHT; y++) {
+                if (x + 2 < BOARDWIDTH && jewels[x][y].getType() == jewels[x + 1][y].getType() && (jewels[x + 1][y].getType() == jewels[x + 2][y].getType())) { //Checks for 3 horizontal jewels in a row
+                    if (x + 3 < BOARDWIDTH && jewels[x + 2][y].getType() == jewels[x + 3][y].getType()) { //checks for 4 horizontal jewels in a row
+                        temp1 = jewels[x + 3][y]; //set dummy1 to the fourth gem in the row
+                        if (x + 4 < BOARDWIDTH && jewels[x + 3][y].getType() == jewels[x + 4][y].getType()) { //checks for 5 horizontal jewels in a row
+                            temp2 = jewels[x + 4][y]; //set dummy2 to the fifth gem in the row
+                        }
+                    }
+            isPattern = true;
+            deletePattern(jewels[x][y], jewels[x + 1][y], jewels[x + 2][y], temp1, temp2); //delete the jewels that are in a pattern
+        }
+            if (y + 2 < BOARDHEIGHT && (jewels[x][y].getType() == jewels[x][y + 1].getType()) && (jewels[x][y + 1].getType() == jewels[x][y + 2].getType())) { //Check for 3 vertical jewels in a row
+                if (y + 3 < BOARDHEIGHT && jewels[x][y + 2].getType() == jewels[x][y + 3].getType()) { //checks for 4 vertical jewels in a row
+                    temp1 = jewels[x][y + 3]; //set dummy1 to the fourth gem in the row
+                    if (y + 4 < BOARDHEIGHT && jewels[x][y + 3].getType() == jewels[x][y + 4].getType()) { //check for 5 vertical jewels in a row
+                        temp2 = jewels[x][y + 4]; //set dummy2 to the fourth gem in the row
+                    }
+                }
+                isPattern = true;
+                deletePattern(jewels[x][y], jewels[x][y + 1], jewels[x][y + 2], temp1, temp2);
+            }
+        }
+    }
+
+        if (!isPattern && !switchedBack) {
+            switchedBack = true;
+            switchJewels();
+        }
+    }
+
+    public static void deletePattern(Jewels jewels1, Jewels jewels2, Jewels jewels3, Jewels jewels4, Jewels jewels5) {
+//        Set each of the jewels to be deleted, to the deleted type
+        jewels1.setType(7);
+        jewels2.setType(7);
+        jewels3.setType(7);
+        jewels4.setType(7);
+        jewels5.setType(7);
+
+        for (int x = 0; x < BOARDWIDTH; x++) {
+            for (int y = 0; y < BOARDHEIGHT; y++) {
+                if (jewels[x][y].getType() == 7) {
+//                    IF the type of jewel is of type 'deleted'
+                    for (int i = y; i >= 0; i--) {
+                        if (i == 0) // if a jewel is deleted from the top row, delete it
+                            jewels[x][i].setType(jewels[x][i].genType());
+                        else
+                            jewels[x][i].setType(jewels[x][i-1].getType());
+                    }
+                }
+            }
+        }
+        checkPattern(); // Check for any new patterns that have appeared on the board, it will keep doing this until there are no more patterns
     }
 }
-
-//     private void selectJewels(MouseEvent e) {
-//         int x = e.getX();
-//         int y = e.getY();
-
-//         if (!selected) {
-//             fromX = x;
-//             fromY = y;
-//             selected = true;
-//         } else { // Select the 2nd jewel and switch them
-//             toX = x;
-//             toY = y;
-//             if((Math.abs(fromX - toX) == 1 ^ Math.abs(fromY - toY) == 1) & (jewels[fromX][fromY].getType() != jewels[toX][toY].getType())) {
-//                 switchGems();
-//                 selected = false;
-//             }
-//         }
-//     }
-
-//     private void switchGems() { // Switch the two jewels the user selected
-//         Jewels.Shapes tmpJewelType = jewels[fromX][fromY].getType();
-//         jewels[fromX][fromY].setType(jewels[toX][toY].getType());
-//         jewels[toX][toY].setType(tmpJewelType);
-//         checkPattern(); // Check to see if a pattern has been made, if not revert back
-//     }
-
-//     private void checkPattern() {
-//         Jewels tmp1 = new Jewels() {
-//             Color col;
-//             Shapes type;
-//             @Override
-//             public Color get_jewel_color() {
-//                 return col;
-//             }
-
-//             @Override
-//             public void setJewelColor() {
-
-//             }
-
-//             @Override
-//             public Shapes getType() {
-//                 return type;
-//             }
-
-//             @Override
-//             public void setType(Shapes jewelToChangeInto) {
-//                 this.type = jewelToChangeInto;
-//             }
-//         };
-//         Jewels tmp2 = new Jewels() {
-//             Color col;
-//             Shapes type;
-//             @Override
-//             public Color get_jewel_color() {
-//                 return col;
-//             }
-
-//             @Override
-//             public void setJewelColor() {
-
-//             }
-
-//             @Override
-//             public Shapes getType() {
-//                 return type;
-//             }
-
-//             @Override
-//             public void setType(Shapes jewelToChangeInto) {
-//                 this.type = jewelToChangeInto;
-//             }
-//         };
-
-//         isPattern = false;
-//         for (int i = 0; i < 8; i++) {
-//             for (int x = 0; x < 8; i++) {
-//                 try {
-//                     if ((jewels[i][x].getType() == jewels[i+1][x+1].getType()) && (jewels[i+1][x].getType() == jewels[i+2][x].getType())) {
-//                         try {
-//                             if (jewels[i+2][x].getType() == jewels[i+3][x].getType()) { // Is there 4 horizontal jewels in a row?
-//                                 tmp1 = jewels[i+3][x]; // set tmp1 to the 4th gem in the row
-//                                 try {
-//                                     if (jewels[i+3][x].getType() == jewels[i+4][x].getType()) {
-//                                         tmp2 = jewels[i+4][x]; // Set this to the 5th element
-//                                     }
-//                                 } catch (Exception e) { e.printStackTrace(); }
-//                             }
-//                         } catch (Exception e) { e.printStackTrace(); }
-//                         isPattern = true;
-//                         removePattern(jewels[i][x], jewels[i][x+1], jewels[i][x+2], tmp1, tmp2);
-//                     }
-//                 } catch (Exception e) {
-//                     System.out.println(e);
-//                 }
-//             }
-//         }
-//     }
-
-//     private void removePattern(Jewels jewels, Jewels jewels1, Jewels jewels2, Jewels tmp1, Jewels tmp2) {
-//         jewels.setType(Jewels.Shapes.Deleted);
-//         jewels1.setType(Jewels.Shapes.Deleted);
-//         jewels2.setType(Jewels.Shapes.Deleted);
-//         tmp1.setType(Jewels.Shapes.Deleted);
-//         tmp2.setType(Jewels.Shapes.Deleted);
-
-//         for (int x = 0; x < 8; x++) {
-//             for (int y = 0; y < 8; y++) {
-//                 if (this.jewels[x][y].getType() == Jewels.Shapes.Deleted) {
-//                     for (int i = y; i >= 0; i--) {
-//                         if (i == 0)
-//                             this.jewels[x][i].setType(this.jewels[x][i].genType());
-//                         else
-//                             this.jewels[x][i].setType(this.jewels[x][i - 1].getType());
-//                     }
-//                 }
-//             }
-//         }
-//         checkPattern();
-//     }
-// }

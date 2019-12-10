@@ -44,6 +44,8 @@ public class MainMenu extends JFrame implements ActionListener {
     public void createGame() {
 //        Create a new game
         this.dispose();
-        new Game();
+        Game game = new Game();
+        game.setLocationRelativeTo(null);
+        game.setVisible(true);
     }
 }
