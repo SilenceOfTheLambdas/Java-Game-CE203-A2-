@@ -10,8 +10,6 @@ public class Board extends JPanel {
 
     public final static int BOARDWIDTH = 8;
     public final static int BOARDHEIGHT = 8;
-    public final int CELLWIDTH = (int) getSize().getWidth() / BOARDWIDTH;
-    public final int CELLHEIGHT = (int) getSize().getHeight() / BOARDHEIGHT;
 
     public static boolean isAlive, isPattern,switchedBack;
     public static Jewels[][] jewels;

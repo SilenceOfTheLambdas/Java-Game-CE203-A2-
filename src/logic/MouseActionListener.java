@@ -1,5 +1,6 @@
 package logic;
 
+import display.Game;
 import objects.Jewels;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -56,14 +57,18 @@ public class MouseActionListener extends MouseAdapter {
         for (int x = 0; x < BOARDWIDTH; x++) {
             for (int y = 0; y < BOARDHEIGHT; y++) {
                 if (x + 2 < BOARDWIDTH && jewels[x][y].getType() == jewels[x + 1][y].getType() && (jewels[x + 1][y].getType() == jewels[x + 2][y].getType())) { //Checks for 3 horizontal jewels in a row
+                    Game.updateScore();
                     if (x + 3 < BOARDWIDTH && jewels[x + 2][y].getType() == jewels[x + 3][y].getType()) { //checks for 4 horizontal jewels in a row
+                        Game.updateScore();
                         temp1 = jewels[x + 3][y]; //set dummy1 to the fourth gem in the row
                     }
             isPattern = true;
             deletePattern(jewels[x][y], jewels[x + 1][y], jewels[x + 2][y], temp1, temp2); //delete the jewels that are in a pattern
         }
             if (y + 2 < BOARDHEIGHT && (jewels[x][y].getType() == jewels[x][y + 1].getType()) && (jewels[x][y + 1].getType() == jewels[x][y + 2].getType())) { //Check for 3 vertical jewels in a row
+                Game.updateScore();
                 if (y + 3 < BOARDHEIGHT && jewels[x][y + 2].getType() == jewels[x][y + 3].getType()) { //checks for 4 vertical jewels in a row
+                    Game.updateScore();
                     temp1 = jewels[x][y + 3]; //set dummy1 to the fourth gem in the row
                 }
                 isPattern = true;
