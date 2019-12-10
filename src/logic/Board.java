@@ -1,11 +1,8 @@
 package logic;
 
 import objects.Circle;
-import objects.Hexagon;
 import objects.Jewels;
 import objects.Square;
-import objects.Triangle;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -102,6 +99,4 @@ public class Board extends JPanel {
             new Circle(g, x + 2, y + 2, cellWidth() - 4, cellHeight() - 4);
        }
     }
-
-
 }

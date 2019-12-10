@@ -58,9 +58,6 @@ public class MouseActionListener extends MouseAdapter {
                 if (x + 2 < BOARDWIDTH && jewels[x][y].getType() == jewels[x + 1][y].getType() && (jewels[x + 1][y].getType() == jewels[x + 2][y].getType())) { //Checks for 3 horizontal jewels in a row
                     if (x + 3 < BOARDWIDTH && jewels[x + 2][y].getType() == jewels[x + 3][y].getType()) { //checks for 4 horizontal jewels in a row
                         temp1 = jewels[x + 3][y]; //set dummy1 to the fourth gem in the row
-                        if (x + 4 < BOARDWIDTH && jewels[x + 3][y].getType() == jewels[x + 4][y].getType()) { //checks for 5 horizontal jewels in a row
-                            temp2 = jewels[x + 4][y]; //set dummy2 to the fifth gem in the row
-                        }
                     }
             isPattern = true;
             deletePattern(jewels[x][y], jewels[x + 1][y], jewels[x + 2][y], temp1, temp2); //delete the jewels that are in a pattern
@@ -68,9 +65,6 @@ public class MouseActionListener extends MouseAdapter {
             if (y + 2 < BOARDHEIGHT && (jewels[x][y].getType() == jewels[x][y + 1].getType()) && (jewels[x][y + 1].getType() == jewels[x][y + 2].getType())) { //Check for 3 vertical jewels in a row
                 if (y + 3 < BOARDHEIGHT && jewels[x][y + 2].getType() == jewels[x][y + 3].getType()) { //checks for 4 vertical jewels in a row
                     temp1 = jewels[x][y + 3]; //set dummy1 to the fourth gem in the row
-                    if (y + 4 < BOARDHEIGHT && jewels[x][y + 3].getType() == jewels[x][y + 4].getType()) { //check for 5 vertical jewels in a row
-                        temp2 = jewels[x][y + 4]; //set dummy2 to the fourth gem in the row
-                    }
                 }
                 isPattern = true;
                 deletePattern(jewels[x][y], jewels[x][y + 1], jewels[x][y + 2], temp1, temp2);

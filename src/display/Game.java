@@ -10,7 +10,7 @@ public class Game extends JFrame {
         getContentPane().add(game);
         game.start();
 
-        setTitle("Totally NOT bejeweled *Kappa*");
+        setTitle("Rainbow $hit 1806094");
         setSize(410, 410);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
