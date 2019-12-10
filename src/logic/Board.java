@@ -1,7 +1,10 @@
 package logic;
 
+import objects.Circle;
+import objects.Hexagon;
 import objects.Jewels;
 import objects.Square;
+import objects.Triangle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,21 +73,34 @@ public class Board extends JPanel {
         y = y * cellHeight();
         Color colour = COLOURS[(jewel.getType())];
 
-        g.setColor(colour);
+        g.setColor(Color.BLACK);
         new Square(g, x, y, x + cellWidth(), y + cellHeight());
-//        if (jewel.getType() == 0 || jewel.getType() == 3) {
-//            new Sqaure(g, x, y, x + cellWidth(), y + cellHeight());
-//        }if (jewel.getType() == 1 || jewel.getType() == 4 || jewel.getType() == 6) {
-//            new Circle(g, x + 2, y + 2, cellWidth() - 4, cellHeight() - 4);
-//        }if (jewel.getType() == 2 || jewel.getType() == 5 || jewel.getType() == 7) {
-//            new Triangle(g, 0, 0, cellWidth() - 4, cellHeight() - 4);
-//        }
-
-        g.setColor(Color.BLACK); // Border each of the cells (makes it look a little better imo
-        g.drawLine(x, y, x, y + cellHeight());
-        g.drawLine(x, y + cellHeight(), x + cellWidth(), y + cellHeight());
-        g.drawLine(x + cellWidth(), y + cellHeight(), x + cellWidth(), y);
-        g.drawLine(x + cellWidth(), y, x, y);
+        // TODO: Figure out how to generate a shape on each cell
+       if (jewel.getType() == 0) {
+            g.setColor(colour);
+           new Square(g, x + 2, y + 2, x + cellWidth() - 4, y + cellHeight() - 4);
+       }if (jewel.getType() == 1) {
+            g.setColor(colour);
+           new Circle(g, x + 2, y + 2, cellWidth() - 4, cellHeight() - 4);
+       }if (jewel.getType() == 2) {
+            g.setColor(colour);
+            new Square(g, x + 2, y + 2, x + cellWidth() - 4, y + cellHeight() - 4);
+       } if (jewel.getType() == 3) {
+            g.setColor(colour);
+            new Circle(g, x + 2, y + 2, cellWidth() - 4, cellHeight() - 4);
+       } if (jewel.getType() == 4) {
+            g.setColor(colour);
+           new Square(g, x + 2, y + 2, x + cellWidth() - 4, y + cellHeight() - 4);
+       } if (jewel.getType() == 5) {
+            g.setColor(colour);
+           new Circle(g, x + 2, y + 2, cellWidth() - 4, cellHeight() - 4);
+       } if (jewel.getType() == 6) {
+            g.setColor(colour);
+           new Square(g, x + 2, y + 2, x + cellWidth() - 4, y + cellHeight() - 4);
+       } if (jewel.getType() == 7) {
+            g.setColor(colour);
+            new Circle(g, x + 2, y + 2, cellWidth() - 4, cellHeight() - 4);
+       }
     }
 
 
