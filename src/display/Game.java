@@ -11,7 +11,7 @@ public class Game extends JFrame {
         game.start();
 
         setTitle("Totally NOT bejeweled *Kappa*");
-        setSize(400, 400);
+        setSize(410, 410);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

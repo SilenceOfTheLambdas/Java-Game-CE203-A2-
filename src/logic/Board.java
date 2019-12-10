@@ -1,6 +1,8 @@
 package logic;
 
 import objects.Jewels;
+import objects.Square;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,6 +10,9 @@ public class Board extends JPanel {
 
     public final static int BOARDWIDTH = 8;
     public final static int BOARDHEIGHT = 8;
+    public final int CELLWIDTH = (int) getSize().getWidth() / BOARDWIDTH;
+    public final int CELLHEIGHT = (int) getSize().getHeight() / BOARDHEIGHT;
+
     public static boolean isAlive, isPattern,switchedBack;
     public static Jewels[][] jewels;
     int fromX, fromY, toX, toY;
@@ -66,8 +71,14 @@ public class Board extends JPanel {
         Color colour = COLOURS[(jewel.getType())];
 
         g.setColor(colour);
-        g.fillRect(x, y, x + cellWidth(), y + cellHeight());
-//        g.fillOval(x, y, x + cellWidth() - 2, y + cellHeight() - 2); // Create an oval shape
+        new Square(g, x, y, x + cellWidth(), y + cellHeight());
+//        if (jewel.getType() == 0 || jewel.getType() == 3) {
+//            new Sqaure(g, x, y, x + cellWidth(), y + cellHeight());
+//        }if (jewel.getType() == 1 || jewel.getType() == 4 || jewel.getType() == 6) {
+//            new Circle(g, x + 2, y + 2, cellWidth() - 4, cellHeight() - 4);
+//        }if (jewel.getType() == 2 || jewel.getType() == 5 || jewel.getType() == 7) {
+//            new Triangle(g, 0, 0, cellWidth() - 4, cellHeight() - 4);
+//        }
 
         g.setColor(Color.BLACK); // Border each of the cells (makes it look a little better imo
         g.drawLine(x, y, x, y + cellHeight());

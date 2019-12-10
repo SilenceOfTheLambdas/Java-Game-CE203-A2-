@@ -86,15 +86,15 @@ public class MouseActionListener extends MouseAdapter {
 
     public static void deletePattern(Jewels jewels1, Jewels jewels2, Jewels jewels3, Jewels jewels4, Jewels jewels5) {
 //        Set each of the jewels to be deleted, to the deleted type
-        jewels1.setType(7);
-        jewels2.setType(7);
-        jewels3.setType(7);
-        jewels4.setType(7);
-        jewels5.setType(7);
+        jewels1.setType(8);
+        jewels2.setType(8);
+        jewels3.setType(8);
+        jewels4.setType(8);
+        jewels5.setType(8);
 
         for (int x = 0; x < BOARDWIDTH; x++) {
             for (int y = 0; y < BOARDHEIGHT; y++) {
-                if (jewels[x][y].getType() == 7) {
+                if (jewels[x][y].getType() == 8) {
 //                    IF the type of jewel is of type 'deleted'
                     for (int i = y; i >= 0; i--) {
                         if (i == 0) // if a jewel is deleted from the top row, delete it
