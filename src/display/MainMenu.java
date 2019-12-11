@@ -34,6 +34,7 @@ public class MainMenu extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 //        This should destroy this object, and then start a new game
         try {
+            Game.userName = JOptionPane.showInputDialog("Please enter your username");
             createGame();
         } catch (Exception ex) {
             System.out.println("An error occurred while creating a new Game");

@@ -4,18 +4,23 @@ import display.Game;
 import objects.Jewels;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.TimerTask;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import static logic.Board.*;
 
 public class MouseActionListener extends MouseAdapter {
 
     private static Board board;
-    private static Jewels[] jewelsToBeDeleted;
+    private static Game game;
 
-    public MouseActionListener(Board board) {
+    public MouseActionListener(Board board, Game game) {
         MouseActionListener.board = board;
+        MouseActionListener.game = game;
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
         selectJewels(e);
@@ -57,18 +62,18 @@ public class MouseActionListener extends MouseAdapter {
         for (int x = 0; x < BOARDWIDTH; x++) {
             for (int y = 0; y < BOARDHEIGHT; y++) {
                 if (x + 2 < BOARDWIDTH && jewels[x][y].getType() == jewels[x + 1][y].getType() && (jewels[x + 1][y].getType() == jewels[x + 2][y].getType())) { //Checks for 3 horizontal jewels in a row
-                    Game.updateScore();
+                    game.updateScore();
                     if (x + 3 < BOARDWIDTH && jewels[x + 2][y].getType() == jewels[x + 3][y].getType()) { //checks for 4 horizontal jewels in a row
-                        Game.updateScore();
+                        game.updateScore();
                         temp1 = jewels[x + 3][y]; //set dummy1 to the fourth gem in the row
                     }
             isPattern = true;
             deletePattern(jewels[x][y], jewels[x + 1][y], jewels[x + 2][y], temp1, temp2); //delete the jewels that are in a pattern
         }
             if (y + 2 < BOARDHEIGHT && (jewels[x][y].getType() == jewels[x][y + 1].getType()) && (jewels[x][y + 1].getType() == jewels[x][y + 2].getType())) { //Check for 3 vertical jewels in a row
-                Game.updateScore();
+                game.updateScore();
                 if (y + 3 < BOARDHEIGHT && jewels[x][y + 2].getType() == jewels[x][y + 3].getType()) { //checks for 4 vertical jewels in a row
-                    Game.updateScore();
+                    game.updateScore();
                     temp1 = jewels[x][y + 3]; //set dummy1 to the fourth gem in the row
                 }
                 isPattern = true;

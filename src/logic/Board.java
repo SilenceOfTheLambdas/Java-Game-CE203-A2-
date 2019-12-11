@@ -1,5 +1,6 @@
 package logic;
 
+import display.Game;
 import objects.Circle;
 import objects.Jewels;
 import objects.Square;
@@ -10,6 +11,7 @@ public class Board extends JPanel {
 
     public final static int BOARDWIDTH = 8;
     public final static int BOARDHEIGHT = 8;
+    private Game game;
 
     public static boolean isAlive, isPattern,switchedBack;
     public static Jewels[][] jewels;
@@ -22,9 +24,10 @@ public class Board extends JPanel {
             new Color(0, 0, 255), new Color(127, 0, 255),
             new Color(0, 0, 0) };
 
-    public Board() {
+    public Board(Game game) {
         jewels = new Jewels[BOARDWIDTH][BOARDHEIGHT];
-        addMouseListener(new MouseActionListener(this));
+        this.game = game;
+        addMouseListener(new MouseActionListener(this, game));
     }
 
     public int cellWidth() {
@@ -70,7 +73,6 @@ public class Board extends JPanel {
 
         g.setColor(Color.BLACK);
         new Square(g, x, y, x + cellWidth(), y + cellHeight());
-        // TODO: Figure out how to generate a shape on each cell
        if (jewel.getType() == 0) {
             g.setColor(colour);
            new Square(g, x + 2, y + 2, x + cellWidth() - 4, y + cellHeight() - 4);
