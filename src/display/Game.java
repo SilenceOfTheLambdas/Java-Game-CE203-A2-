@@ -12,6 +12,8 @@ public class Game extends JFrame {
     public JLabel score = new JLabel();
     public static int SCORE = 0;
     public static String userName;
+    JLabel countdown = new JLabel();
+    int count = 120; // Countdown timer (in seconds)
     Timer timer = new Timer();
 
     public void setMenu() {
@@ -28,13 +30,13 @@ public class Game extends JFrame {
         this.setJMenuBar(game_menubar);
     }
 
-
     public void setScorePane() {
         JPanel score_pane = new JPanel();
         score_pane.add(score);
         score_pane.setBackground(Color.WHITE);
         score_pane.setForeground(Color.BLACK);
         getContentPane().add(score_pane, BorderLayout.SOUTH);
+        score_pane.add(countdown);
     }
 
     public void updateScore() {
@@ -43,9 +45,25 @@ public class Game extends JFrame {
         score.repaint();
     }
 
+    public void countDown() {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                countdown.setText("Countdown: " + count);
+                count--;
+                if (count == -1) {
+                    timer.cancel();
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(task, 1000, 1000);
+    }
+
     public Game() {
         setMenu();
         setScorePane();
+        countDown();
         Board game = new Board(this);
         getContentPane().add(game, BorderLayout.CENTER);
         game.start();
@@ -62,6 +80,6 @@ public class Game extends JFrame {
                 gameOver.setLocationRelativeTo(null);
                 gameOver.setVisible(true);
             }
-        }, 60000); // Do this ^ after 2 mins
+        }, 120*1000); // Do this ^ after 2 minutes
     }
 }
