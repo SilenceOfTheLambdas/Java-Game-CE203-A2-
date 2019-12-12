@@ -4,6 +4,7 @@ import logic.Board;
 import logic.GameOver;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -76,10 +77,16 @@ public class Game extends JFrame {
             public void run() {
                 this.cancel();
                 game.setVisible(false);
-                GameOver gameOver = new GameOver();
+                GameOver gameOver = null;
+                try {
+                    gameOver = new GameOver();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                assert gameOver != null;
                 gameOver.setLocationRelativeTo(null);
                 gameOver.setVisible(true);
             }
-        }, 120*1000); // Do this ^ after 2 minutes
+        }, 120*100); // Do this ^ after 2 minutes
     }
 }

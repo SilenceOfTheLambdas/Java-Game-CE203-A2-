@@ -5,10 +5,20 @@ import display.Game;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.IOException;
 
 public class GameOver extends JFrame{
 
-    public GameOver() {
+    public void updateScore() throws IOException {
+        PlayerScores ps = new PlayerScores();
+        ps.writeFile();
+        ps.readFile();
+        ps.updatePlayers();
+    }
+
+    public GameOver() throws IOException {
+
+        updateScore();
         JPanel scorePanel = new JPanel();
         JPanel buttons = new JPanel();
 
@@ -16,7 +26,6 @@ public class GameOver extends JFrame{
         JButton exitGame = new JButton("Exit");
         JButton replay = new JButton("Play again");
 
-//        TODO: Multiply score based on the time it took to finish
         totalScore.setText("Final Score: " + Game.SCORE);
         scorePanel.add(totalScore);
         buttons.add(exitGame);
