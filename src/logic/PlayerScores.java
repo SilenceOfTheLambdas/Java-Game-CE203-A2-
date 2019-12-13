@@ -20,18 +20,16 @@ public class PlayerScores {
     int highest_score = last_score;
 
     public void getHighest_score() throws IOException {
-        Scanner scanner = new Scanner(new FileReader("scores.txt"));
 
         Scanner sc1 = new Scanner(new FileReader("scores.txt"));
         while (sc1.hasNextLine()) {
             String line = sc1.nextLine();
             if (line.contains(player_name)) {
-                System.out.println(line);
-                fileContents.put(sc1.next(), Integer.valueOf(sc1.next()));
+                String[] bruh = line.split(" ");
+                fileContents.put(bruh[0], Integer.valueOf(bruh[1]));
             }
         }
         highest_score = fileContents.get(player_name);
-        scanner.close();
         if (last_score > highest_score) {
             updatePlayers(String.valueOf(highest_score), String.valueOf(last_score));
         }
@@ -92,7 +90,7 @@ public class PlayerScores {
         boolean found = false;
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            if (!line.contains(player_name)) {
+            if (line.contains(player_name)) {
                 found = true;
             }
         }
@@ -100,20 +98,7 @@ public class PlayerScores {
             List<String> lines = Collections.singletonList(player_name + " " + last_score);
             Path file = Paths.get("scores.txt");
             Files.write(file, lines, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
-
-            Scanner sc1 = new Scanner(new FileReader("scores.txt"));
-            while (sc1.hasNext(player_name)) {
-                String name = sc1.next();
-                int score = sc1.nextInt();
-                fileContents.put(name, score);
-            }
-        } else {
-            Scanner sc1 = new Scanner(new FileReader("scores.txt"));
-            while (sc1.hasNext(player_name)) {
-                String name = sc1.next();
-                int score = sc1.nextInt();
-                fileContents.put(name, score);
-            }
+            fileContents.put(player_name, Game.SCORE);
         }
         getHighest_score();
     }

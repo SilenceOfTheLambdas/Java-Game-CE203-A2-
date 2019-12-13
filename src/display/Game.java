@@ -87,6 +87,6 @@ public class Game extends JFrame {
                 gameOver.setLocationRelativeTo(null);
                 gameOver.setVisible(true);
             }
-        }, 120*100); // Do this ^ after 2 minutes
+        }, 30*1000); // Do this ^ after 2 minutes
     }
 }
