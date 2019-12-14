@@ -18,6 +18,7 @@ public class Game extends JFrame {
     JLabel countdown = new JLabel();
     int count = 120; // Countdown timer (in seconds)
     Timer timer = new Timer();
+    Game thisGame = this;
 
     public void setMenu() {
 //        Creates a new menubar
@@ -40,12 +41,6 @@ public class Game extends JFrame {
         score_pane.setForeground(Color.BLACK);
         getContentPane().add(score_pane, BorderLayout.SOUTH);
         score_pane.add(countdown);
-    }
-
-    public void updateScore() {
-        SCORE++;
-        score.setText("Current Score: " + SCORE + " | " + userName);
-        score.repaint();
     }
 
     public void countDown() {
@@ -89,7 +84,7 @@ public class Game extends JFrame {
                 game.setVisible(false);
                 GameOver gameOver = null;
                 try {
-                    gameOver = new GameOver();
+                    gameOver = new GameOver(thisGame);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -97,6 +92,12 @@ public class Game extends JFrame {
                 gameOver.setLocationRelativeTo(null);
                 gameOver.setVisible(true);
             }
-        }, 120*1000); // Do this ^ after 2 minutes
+        }, 12*1000); // Do this ^ after 2 minutes
+    }
+
+    public void updateScore() {
+        SCORE++;
+        score.setText("Current Score: " + SCORE + " | " + userName);
+        score.repaint();
     }
 }

@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenu extends JFrame implements ActionListener {
-    MainMenu() {
+    public MainMenu() {
         JPanel menu = new JPanel();
         //    This will hold the main menu, this menu will show first and then, when the user clicks on start; the game will begin
         JButton startBtn = new JButton("Start game");
