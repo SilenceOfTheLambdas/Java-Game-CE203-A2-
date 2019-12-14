@@ -12,12 +12,10 @@ import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 public class PlayerScores {
-//    TODO: Create a players score file
 //    - Write to it & then, either add a new player and their score, or update an existing players score if it's higher than there last
     String player_name = Game.userName;
     int last_score = Game.SCORE;
     Map<String, Integer> fileContents = new HashMap<>();
-    Map<String, String> top5scores = new HashMap<>();
 
     int highest_score = last_score;
 
@@ -27,8 +25,8 @@ public class PlayerScores {
         while (sc1.hasNextLine()) {
             String line = sc1.nextLine();
             if (line.contains(player_name)) {
-                String[] bruh = line.split(" ");
-                fileContents.put(bruh[0], Integer.valueOf(bruh[1]));
+                String[] temp = line.split(" ");
+                fileContents.put(temp[0], Integer.valueOf(temp[1]));
             }
         }
         highest_score = fileContents.get(player_name);
@@ -75,13 +73,6 @@ public class PlayerScores {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    public void readFile(JTextArea scores) throws IOException {
-//        This method is used to obtain the top 5 players (in order of score)
-        for (String id :fileContents.keySet()) {
-            scores.append(id + ": " + fileContents.get(id));
         }
     }
 
