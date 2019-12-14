@@ -17,6 +17,8 @@ public class PlayerScores {
     String player_name = Game.userName;
     int last_score = Game.SCORE;
     Map<String, Integer> fileContents = new HashMap<>();
+    Map<String, String> top5scores = new HashMap<>();
+
     int highest_score = last_score;
 
     public void getHighest_score() throws IOException {
@@ -79,7 +81,7 @@ public class PlayerScores {
     public void readFile(JTextArea scores) throws IOException {
 //        This method is used to obtain the top 5 players (in order of score)
         for (String id :fileContents.keySet()) {
-            scores.append("\n" + id + ": " + fileContents.get(id));
+            scores.append(id + ": " + fileContents.get(id));
         }
     }
 

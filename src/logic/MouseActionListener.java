@@ -2,6 +2,9 @@ package logic;
 
 import display.Game;
 import objects.Jewels;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.TimerTask;
@@ -20,6 +23,7 @@ public class MouseActionListener extends MouseAdapter {
     public MouseActionListener(Board board, Game game) {
         MouseActionListener.board = board;
         MouseActionListener.game = game;
+
     }
     @Override
     public void mouseClicked(MouseEvent e) {

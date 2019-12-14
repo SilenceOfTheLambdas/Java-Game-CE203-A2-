@@ -4,6 +4,8 @@ import logic.Board;
 import logic.GameOver;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,15 +22,15 @@ public class Game extends JFrame {
     public void setMenu() {
 //        Creates a new menubar
         JMenuBar game_menubar = new JMenuBar();
-        JMenuItem new_game = new JMenuItem("New game");
-        JMenuItem pause = new JMenuItem("Pause");
         JMenuItem quit_game = new JMenuItem("Quit game");
         JMenu game_menu = new JMenu("Game");
-        game_menu.add(new_game); game_menu.add(pause); game_menu.add(quit_game);
+        game_menu.add(quit_game);
         game_menubar.add(game_menu);
         game_menubar.setBackground(Color.WHITE);
         game_menubar.setForeground(Color.BLACK);
         this.setJMenuBar(game_menubar);
+
+        quit_game.addActionListener(actionEvent -> System.exit(1));
     }
 
     public void setScorePane() {
@@ -68,6 +70,14 @@ public class Game extends JFrame {
         Board game = new Board(this);
         getContentPane().add(game, BorderLayout.CENTER);
         game.start();
+        game.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "escape");
+        game.getActionMap().put("escape", (new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                dispose();
+                new MainMenu();
+            }
+        }));
 
         setTitle("Rainbow $hit | 1806094");
         setSize(350, 400);
@@ -87,6 +97,6 @@ public class Game extends JFrame {
                 gameOver.setLocationRelativeTo(null);
                 gameOver.setVisible(true);
             }
-        }, 30*1000); // Do this ^ after 2 minutes
+        }, 120*1000); // Do this ^ after 2 minutes
     }
 }
